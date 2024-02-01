@@ -1,6 +1,8 @@
 ---
+og:title: "Mi primera publicación en el blog"
 title: "Mi primera publicación en el blog"
 pubDate: 2022-07-01
+:ogdescription: "Este es la primera publicación de mi nuevo blog Astro."
 description: "Este es la primera publicación de mi nuevo blog Astro."
 author: "Alumno de Astro"
 image:
