@@ -2,6 +2,11 @@
 import "../styles/global.css";
 import Layout from "../layouts/Layout.astro";
 import Card from "../components/Card.astro";
+
+const res = await fetch(
+	"https://inclusioncloud.com/wp-json/wp/v2/posts?_embed"
+);
+const posts = await res.json();
 ---
 
 <Layout title="Welcome to Astro.">
@@ -39,7 +44,7 @@ import Card from "../components/Card.astro";
 			</defs>
 		</svg>
 		<h1>Welcome to <span class="text-gradient">Astro cambios</span></h1>
-		<p class="instructions">
+		<!--<p class="instructions">
 			To get started, open the directory <code>src/pages</code> in your project.<br
 			/>
 			<strong>Code Challenge:</strong> Tweak the "Welcome to Astro" message above.
@@ -65,11 +70,56 @@ import Card from "../components/Card.astro";
 				title="Community"
 				body="Come say hi to our amazing Discord community. ❤️"
 			/>
-		</ul>
+		</ul>-->
 	</main>
+	<h2>Astro + WordPress 🚀</h2>
+	{
+		posts.map((post) => (
+			
+			<article >
+				<!--<h2 set:html={post.title.rendered} />-->
+				<h2>
+            		<a href={`/posts/${post.slug}/`} set:html={post.title.rendered} />
+          		</h2>
+				<img
+					height="100px"
+					src={post._embedded["wp:featuredmedia"]["0"].source_url}
+				/>
+				
+				<!-- <div set:html={post.content.rendered} /> -->
+			</article>
+		))
+	}
 </Layout>
 
 <style>
+
+
+	article{
+		max-width: 900px;
+	}
+	div figure{
+		margin: 0;
+		max-width: 900px;
+	}
+
+	div img{
+		margin: 0;
+		max-width: 100%;
+		height: auto;
+	}
+
+	div iframe{
+		margin: 0;
+		width: 100%;
+		height: 300px;
+	}
+
+	div ,h1,h2,h3,p,a{
+		color: white;
+	}
+
+
 	main {
 		margin: auto;
 		padding: 1rem;
