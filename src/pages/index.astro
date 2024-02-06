@@ -83,7 +83,8 @@ const posts = await res.json();
           		</h2>
 				<img
 					height="100px"
-					src={post._embedded["wp:featuredmedia"]["0"].source_url}
+					src={post._embedded["wp:featuredmedia"]["0"].source_url} 
+					alt={post.title.rendered}
 				/>
 				
 				<!-- <div set:html={post.content.rendered} /> -->

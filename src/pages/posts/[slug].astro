@@ -28,7 +28,11 @@ export async function getStaticPaths() {
 		<a href="/">Inicio</a>
 		<article>
 			<h1 set:html={post.title.rendered} />
-			<img width="100%" src={post._embedded["wp:featuredmedia"]["0"].source_url} />
+			<img
+				width="100%"
+				src={post._embedded["wp:featuredmedia"]["0"].source_url}
+				alt={post.title.rendered}
+			/>
 			<div style="width: 100%" set:html={post.content.rendered} />
 		</article>
 	</main>
